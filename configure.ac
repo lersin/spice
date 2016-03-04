@@ -150,6 +150,10 @@ GLIB2_REQUIRED=2.28
 PKG_CHECK_MODULES([GLIB2], [glib-2.0 >= $GLIB2_REQUIRED gio-2.0 >= $GLIB2_REQUIRED])
 AS_VAR_APPEND([SPICE_REQUIRES], [" glib-2.0 >= $GLIB2_REQUIRED gio-2.0 >= $GLIB2_REQUIRED"])
 
+AC_CHECK_LIB(glib-2.0, g_get_num_processors,
+             AC_DEFINE([HAVE_G_GET_NUMPROCESSORS], 1, [Defined if we have g_get_num_processors()]),,
+             $GLIB2_LIBS)
+
 PKG_CHECK_MODULES([GOBJECT2], [gobject-2.0 >= $GLIB2_REQUIRED])
 AS_VAR_APPEND([SPICE_REQUIRES], [" gobject-2.0 >= $GLIB2_REQUIRED"])
 
