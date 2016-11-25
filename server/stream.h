@@ -42,7 +42,6 @@
 #define RED_STREAM_DEFAULT_LOW_START_BIT_RATE (2.5 * 1024 * 1024) // 2.5Mbps
 #define MAX_FPS 30
 
-typedef struct Stream Stream;
 
 typedef struct RedStreamActivateReportItem {
     RedPipeItem pipe_item;
@@ -62,7 +61,7 @@ typedef struct StreamStats {
 } StreamStats;
 #endif
 
-typedef struct StreamAgent {
+struct StreamAgent {
     QRegion vis_region; /* the part of the surface area that is currently occupied by video
                            fragments */
     QRegion clip;       /* the current video clipping. It can be different from vis_region:
@@ -83,7 +82,7 @@ typedef struct StreamAgent {
 #ifdef STREAM_STATS
     StreamStats stats;
 #endif
-} StreamAgent;
+};
 
 typedef struct RedStreamClipItem {
     RedPipeItem base;
